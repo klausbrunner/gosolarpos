@@ -12,13 +12,15 @@ import "math"
 // deltaT is the difference between universal time and terrestrial time, in seconds.
 // pressure is air pressure in hectopascal, used for refraction correction (if unsure, use 1000).
 // temperature is air temperature in degrees Celsius, used for refraction correction.
-func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64, pressure float64, temperature float64) (azimuthDegrees, zenithDegrees float64) {
+func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64,
+	pressure float64, temperature float64) (azimuthDegrees, zenithDegrees float64) {
 	t := calcT(date)
 
 	tE := t + 1.1574e-5*deltaT
 	omegaAtE := 0.0172019715 * tE
 
-	lambda := -1.388803 + 1.720279216e-2*tE + 3.3366e-2*math.Sin(omegaAtE-0.06172) + 3.53e-4*math.Sin(2.0*omegaAtE-0.1163)
+	lambda := -1.388803 + 1.720279216e-2*tE + 3.3366e-2*math.Sin(omegaAtE-0.06172) +
+		3.53e-4*math.Sin(2.0*omegaAtE-0.1163)
 
 	epsilon := 4.089567e-1 - 6.19e-9*tE
 
@@ -91,5 +93,6 @@ func calcT(date time.Time) float64 {
 		y = y - 1
 	}
 
-	return float64(int(365.25*(y-2000))) + float64(int(30.6001*(m+1))) - float64(int(0.01*y)) + d + 0.0416667*h - 21958
+	return float64(int(365.25*(y-2000))) + float64(int(30.6001*(m+1))) -
+		float64(int(0.01*y)) + d + 0.0416667*h - 21958
 }
