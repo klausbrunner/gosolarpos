@@ -9,9 +9,6 @@ import "math"
 // Grena3 calculates topocentric solar position following algorithm number 3
 // described in Grena, 'Five new algorithms for the computation of sun position
 // from 2010 to 2110', Solar Energy 86 (2012) pp. 1323-1337.
-// deltaT is the difference between universal time and terrestrial time, in seconds.
-// pressure is air pressure in hectopascal, used for refraction correction (if unsure, use 1000).
-// temperature is air temperature in degrees Celsius, used for refraction correction.
 func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64,
 	pressure float64, temperature float64) (azimuthDegrees, zenithDegrees float64) {
 	t := calcT(date)
