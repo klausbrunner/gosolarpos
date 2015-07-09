@@ -12,7 +12,7 @@ Usage
 azimuth, zenithAngle := Grena3(time.Now(),
 		52.521667, // latitude (degrees)
 		13.413333, // longitude (degrees)
-		65,        // Delta T (s) - if unknown, use EstimateDeltaT()
+		68,        // Delta T (s) - if unknown, use EstimateDeltaT()
 		1000,      // air pressure (hPa)
 		20)        // air temperature (°C)
 ```

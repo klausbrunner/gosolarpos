@@ -9,11 +9,13 @@ import "math"
 // Grena3 calculates topocentric solar position following algorithm number 3
 // described in Grena, 'Five new algorithms for the computation of sun position
 // from 2010 to 2110', Solar Energy 86 (2012) pp. 1323-1337.
-func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64,
-	pressure float64, temperature float64) (azimuthDegrees, zenithDegrees float64) {
+func Grena3(date time.Time,
+	latitudeDegrees float64, longitudeDegrees float64,
+	deltaTSeconds float64,
+	pressureHPa float64, temperatureCelsius float64) (azimuthDegrees, zenithDegrees float64) {
 	t := calcT(date)
 
-	tE := t + 1.1574e-5*deltaT
+	tE := t + 1.1574e-5*deltaTSeconds
 	omegaAtE := 0.0172019715 * tE
 
 	lambda := -1.388803 + 1.720279216e-2*tE + 3.3366e-2*math.Sin(omegaAtE-0.06172) +
@@ -33,13 +35,13 @@ func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64,
 
 	delta := math.Asin(sLambda * sEpsilon)
 
-	h := 1.7528311 + 6.300388099*t + toRad(longitude) - alpha
+	h := 1.7528311 + 6.300388099*t + toRad(longitudeDegrees) - alpha
 	h = math.Mod((h+math.Pi), (2*math.Pi)) - math.Pi
 	if h < -math.Pi {
 		h = h + 2*math.Pi
 	}
 
-	sPhi := math.Sin(toRad(latitude))
+	sPhi := math.Sin(toRad(latitudeDegrees))
 	cPhi := math.Sqrt((1 - sPhi*sPhi))
 	sDelta := math.Sin(delta)
 	cDelta := math.Sqrt(1 - sDelta*sDelta)
@@ -51,8 +53,10 @@ func Grena3(date time.Time, latitude float64, longitude float64, deltaT float64,
 	gamma := math.Atan2(sH, cH*sPhi-sDelta*cPhi/cDelta)
 
 	deltaRe := 0.0
-	if eP > 0 && pressure > 0.0 && pressure < 3000.0 && temperature > -273 && temperature < 273 {
-		deltaRe = (0.08422 * (pressure / 1000)) / ((273.0 + temperature) * math.Tan(eP+0.003138/(eP+0.08919)))
+	if eP > 0 && pressureHPa > 0.0 && pressureHPa < 3000.0 &&
+		temperatureCelsius > -273 && temperatureCelsius < 273 {
+		deltaRe = (0.08422 * (pressureHPa / 1000)) / ((273.0 + temperatureCelsius) *
+			math.Tan(eP+0.003138/(eP+0.08919)))
 	}
 
 	z := math.Pi/2 - eP - deltaRe

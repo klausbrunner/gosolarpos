@@ -13,12 +13,12 @@ func ExampleGrena3() {
 	azimuth, zenithAngle := Grena3(date,
 		52.521667, // latitude (degrees)
 		13.413333, // longitude (degrees)
-		65,        // Delta T (s)
+		68,        // Delta T (s)
 		1000,      // air pressure (hPa)
 		20)        // air temperature (°C)
 
-	fmt.Printf("%.3f %.3f\n", azimuth, zenithAngle)
-	// Output: 162.233 29.990
+	fmt.Printf("azimuth: %.2f°, zenith: %.2f°\n", azimuth, zenithAngle)
+	// Output: azimuth: 162.23°, zenith: 29.99°
 }
 
 func TestTimeConv(t *testing.T) {
