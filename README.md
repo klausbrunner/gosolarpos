@@ -11,6 +11,10 @@ Usage
 -----
 
 ```Go
+import (
+    "github.com/KlausBrunner/gosolarpos"
+)
+
 azimuth, zenithAngle := Grena3(time.Now(),
 		52.521667, // latitude (degrees)
 		13.413333, // longitude (degrees)
