@@ -5,7 +5,7 @@ gosolarpos
 
 Package gosolarpos contains functions to find topocentric solar coordinates, i.e. the sun’s position on the sky at a given date, latitude, and longitude (and other parameters).
 
-This is a partial, early-stage Golang port of https://github.com/KlausBrunner/solarpositioning. Currently, only the [Grena/ENEA](http://dx.doi.org/10.1016/j.solener.2012.01.024) #3 algorithm is included - which should be fine for most applications, and preferable to many of the unattributed sun position calculation snippets floating around the Web.
+This is a partial Golang port of https://github.com/KlausBrunner/solarpositioning. Currently, only the [Grena/ENEA](http://dx.doi.org/10.1016/j.solener.2012.01.024) #3 algorithm is included - which should be fine for most applications, and preferable to many of the unattributed sun position calculation snippets floating around the Web.
 
 Usage
 -----
