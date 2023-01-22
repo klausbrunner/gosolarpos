@@ -7,7 +7,8 @@ import (
 
 // EstimateDeltaT returns an inter- or extrapolated estimate of Delta T for the
 // given time. This is based on Espenak and Meeus, "Five Millennium Canon of
-// Solar Eclipses: -1999 to +3000" (NASA/TP-2006-214141).
+// Solar Eclipses: -1999 to +3000" (NASA/TP-2006-214141) and an update by Espenak
+// in 2014 on EclipseWise.com.
 func EstimateDeltaT(forDate time.Time) (deltaTSeconds float64) {
 	year := decimalYear(forDate)
 
@@ -61,11 +62,12 @@ func EstimateDeltaT(forDate time.Time) (deltaTSeconds float64) {
 		t := year - 2000
 		deltaTSeconds = 63.86 + 0.3345*t - 0.060374*math.Pow(t, 2) +
 			0.0017275*math.Pow(t, 3) + 0.000651814*math.Pow(t, 4) + 0.00002373599*math.Pow(t, 5)
-	case year < 2050:
-		t := year - 2000
-		deltaTSeconds = 62.92 + 0.32217*t + 0.005589*math.Pow(t, 2)
-	case year < 2150:
-		deltaTSeconds = -20 + 32*math.Pow(((year-1820)/100), 2) - 0.5628*(2150-year)
+	case year < 2015:
+		t := year - 2005
+		deltaTSeconds = 64.69 + 0.2930*t
+	case year < 3000:
+		t := year - 2015
+		deltaTSeconds = 67.62 + 0.3645*t + 0.0039755*math.Pow(t, 2)
 	default:
 		u := (year - 1820) / 100
 		deltaTSeconds = -20 + 32*math.Pow(u, 2)

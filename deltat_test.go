@@ -35,6 +35,8 @@ func TestHistoricData(t *testing.T) {
 		{1990, 56.9},
 		{2005, 64.7},
 		{2015, 68.0},
+		{2019, 69.2202},
+		{2022, 69.2945},
 	}
 
 	for _, row := range referenceData {
@@ -48,7 +50,6 @@ func TestHistoricData(t *testing.T) {
 		if estDiffRatio > 0.03 {
 			t.Error("ref: ", ref, " actual: ", est)
 		}
-
 	}
 
 }
