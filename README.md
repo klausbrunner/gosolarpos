@@ -32,8 +32,8 @@ A simple CLI is also available:
 $ cd cmd/sol
 $ go install
 $ sol --lat 48.266667 --lon -116.566667                 
- using current time: 2023-01-21 13:35:26.139919 -0800 PST m=+0.000353835
- estimating delta-T: 73.310637
- using standard sea-level pressure: 1013.250000 hPa
-azumith: 204.254092   zenith: 71.457228
+ using current time: 2023-01-22 09:46:27.86356 +0100 CET m=+0.000386917
+ estimating delta-T: 70.81
+ using standard sea-level pressure: 1013.25 hPa
+azimuth: 23.252482°   zenith: 149.786614°
 ```

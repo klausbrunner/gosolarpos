@@ -94,7 +94,7 @@ func main() {
 		deltaT = v
 	} else {
 		deltaT = gosolarpos.EstimateDeltaT(date)
-		fmt.Printf(" estimating delta-T: %.2f\n", deltaT)
+		fmt.Printf(" estimating delta-T: %.2f s\n", deltaT)
 	}
 
 	var pressureHPa float64
@@ -130,11 +130,11 @@ func main() {
 			panic(err)
 		}
 		temperatureC = v
-		if f.Changed {
-			fmt.Printf(" using standard sea-level temperature: %.2 C\n", temperatureC)
+		if !f.Changed {
+			fmt.Printf(" using standard sea-level temperature: %.2f°C\n", temperatureC)
 		}
 	}
 
 	azimuth, zenith := gosolarpos.Grena3(date, lat, lon, deltaT, pressureHPa, temperatureC)
-	fmt.Printf("azumith: %.6f   zenith: %.6f\n", azimuth, zenith)
+	fmt.Printf("azimuth: %.6f°  zenith: %.6f°\n", azimuth, zenith)
 }
