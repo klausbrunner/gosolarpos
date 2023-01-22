@@ -94,7 +94,7 @@ func main() {
 		deltaT = v
 	} else {
 		deltaT = gosolarpos.EstimateDeltaT(date)
-		fmt.Printf(" estimating delta-T: %.6f\n", deltaT)
+		fmt.Printf(" estimating delta-T: %.2f\n", deltaT)
 	}
 
 	var pressureHPa float64
@@ -112,7 +112,7 @@ func main() {
 		}
 		pressureHPa = v
 		if !f.Changed {
-			fmt.Printf(" using standard sea-level pressure: %.6f hPa\n", pressureHPa)
+			fmt.Printf(" using standard sea-level pressure: %.2f hPa\n", pressureHPa)
 		}
 	}
 
@@ -131,7 +131,7 @@ func main() {
 		}
 		temperatureC = v
 		if f.Changed {
-			fmt.Printf(" using standard sea-level temperature: %.6f C\n", temperatureC)
+			fmt.Printf(" using standard sea-level temperature: %.2 C\n", temperatureC)
 		}
 	}
 
