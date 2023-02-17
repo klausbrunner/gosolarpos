@@ -8,7 +8,7 @@ import (
 
 	flag "github.com/spf13/pflag"
 
-	"github.com/KlausBrunner/gosolarpos"
+	"github.com/klausbrunner/gosolarpos"
 )
 
 const (

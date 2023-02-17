@@ -1,3 +1,3 @@
-module github.com/KlausBrunner/gosolarpos
+module github.com/klausbrunner/gosolarpos
 
 go 1.18
