@@ -131,7 +131,7 @@ func main() {
 		}
 		temperatureC = v
 		if !f.Changed {
-			fmt.Printf(" using standard sea-level temperature: %.2f°C\n", temperatureC)
+			fmt.Printf(" using standard air temperature: %.2f°C\n", temperatureC)
 		}
 	}
 
