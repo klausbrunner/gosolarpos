@@ -1,3 +1,3 @@
 module github.com/klausbrunner/gosolarpos
 
-go 1.18
+go 1.20
